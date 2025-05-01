@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000";
+const API_URL = "https://country-app-theta-five.vercel.app";
 
 // Helper function to get authorization header
 const getAuthHeader = () => {

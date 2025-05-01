@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "https://country-app-theta-five.vercel.app";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
