@@ -67,8 +67,8 @@ const CountryDetails = () => {
 
             {/* Info */}
             <div className="flex-1 space-y-6">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-purple-700">
-                {country.name.common}
+            <h1 className="text-2xl md:text-2xl lg:text-4xl font-bold text-gray-800">
+            {country.name.common}
               </h1>
               <p className="text-gray-600 italic text-lg">
                 "{country.name.official}"
