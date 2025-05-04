@@ -6,9 +6,7 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
-
 const API_URL = "https://country-app-theta-five.vercel.app";
-
 
 
 const flagList = [
@@ -105,7 +103,7 @@ const Login = () => {
           transition={{ delay: 0.3 }}
           className="mb-4 text-3xl font-bold text-center text-purple-700"
         >
-          ✈️ Welcome Explorer
+          Welcome Explorer
         </motion.h2>
 
         <p className="mb-6 text-sm text-center text-gray-600">
