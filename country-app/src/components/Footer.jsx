@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-purple-400 to-indigo-500 text-white py-8 mt-10">
       <div className="container mx-auto px-4 text-center">
-        <p className="text-lg mb-4">&copy; 2025 World Explorer. All Rights Reserved.</p>
+        <p className="text-lg mb-4">&copy; 2025 GeoPortal. All Rights Reserved.</p>
         
         <div className="flex justify-center space-x-6">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer">
