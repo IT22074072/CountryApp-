@@ -217,7 +217,7 @@ const Home = () => {
           <div className="inline-flex items-center justify-center text-5xl md:text-6xl text-purple-500 mb-4 animate-pulse">
             <FaGlobeAmericas />
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold text-purple-400">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-100 ">
             Explore the World
           </h1>
           <p className="mt-2 text-gray-300 text-base md:text-lg">
