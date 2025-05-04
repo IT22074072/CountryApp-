@@ -103,11 +103,11 @@ const Login = () => {
           transition={{ delay: 0.3 }}
           className="mb-4 text-3xl font-bold text-center text-purple-700"
         >
-          Welcome Explorer
+          Welcome GeoPortal
         </motion.h2>
 
         <p className="mb-6 text-sm text-center text-gray-600">
-          Discover the world through a purple lens...
+          Discover the world...
         </p>
 
         <form onSubmit={handleLogin}>

@@ -36,7 +36,7 @@ const Navbar = () => {
   return (
     <nav className="flex items-center justify-between px-8 py-4 bg-gradient-to-r from-purple-400 to-indigo-500 shadow-xl rounded-b-xl">
       <button onClick={goToHome}>
-        <h1 className="text-3xl font-bold text-white tracking-wide">🌍 Country Explorer</h1>
+        <h1 className="text-3xl font-bold text-white tracking-wide">🌍 GeoPortal</h1>
       </button>
       <div className="space-x-4 hidden md:flex">
       {isAuthenticated ? (
