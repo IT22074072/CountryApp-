@@ -4,7 +4,9 @@ import { motion } from "framer-motion";
 import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
-import { toast } from 'react-toastify';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const API_URL = "https://country-app-theta-five.vercel.app";
 
@@ -30,12 +32,12 @@ const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
-
-
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
     try {
       const res = await axios.post(`${API_URL}/api/auth/login`, {
         email,
@@ -44,9 +46,16 @@ const Login = () => {
       const { token, user } = res.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/home");
+      
+      toast.success("Login successful! Welcome to GeoPortal");
+      
+      // Delay navigation to allow toast to be visible
+      setTimeout(() => {
+        navigate("/home");
+      }, 1500); // Wait 1.5 seconds before navigating
     } catch (err) {
-      alert("Login failed: " + err.response?.data?.message || err.message);
+      toast.error("Login failed: " + err.response?.data?.message || err.message);
+      setIsLoading(false);
     }
   };
 
@@ -90,6 +99,14 @@ const Login = () => {
         />
       ))}
 
+      <ToastContainer 
+        position="top-right" 
+        autoClose={3000} 
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+      />
+
       {/* Login Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -127,9 +144,10 @@ const Login = () => {
           />
           <button
             type="submit"
-            className="w-full py-3 text-white bg-purple-600 rounded-full hover:bg-purple-800"
+            disabled={isLoading}
+            className="w-full py-3 text-white bg-purple-600 rounded-full hover:bg-purple-800 disabled:bg-purple-400"
           >
-            Login 🚀
+            {isLoading ? "Logging in..." : "Login 🚀"}
           </button>
         </form>
 

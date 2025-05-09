@@ -2,6 +2,8 @@ import React, { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const API_URL = "https://country-app-theta-five.vercel.app";
 
@@ -27,10 +29,13 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
+    
     try {
       await axios.post(`${API_URL}/api/auth/signup`, {
         username,
@@ -38,10 +43,17 @@ const Signup = () => {
         password,
       });
 
-      // Redirect to login page after successful signup
-      navigate("/login");
+      // Show success toast
+      toast.success("Account created successfully! Redirecting to login...");
+      
+      // Delay navigation to allow toast to be visible
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000);
     } catch (err) {
-      alert("Signup failed: " + (err.response?.data?.message || err.message));
+      // Show error toast
+      toast.error("Signup failed: " + (err.response?.data?.message || err.message));
+      setIsLoading(false);
     }
   };
 
@@ -85,6 +97,17 @@ const Signup = () => {
         />
       ))}
 
+      {/* Toast Container */}
+      <ToastContainer 
+        position="top-right" 
+        autoClose={3000} 
+        newestOnTop={true}
+        closeOnClick
+        pauseOnHover
+        draggable
+        theme="light"
+      />
+
       {/* Signup Card */}
       <motion.div
         initial={{ opacity: 0, y: 40 }}
@@ -113,6 +136,7 @@ const Signup = () => {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            disabled={isLoading}
           />
           <input
             className="w-full px-4 py-3 mb-4 border border-indigo-300 rounded-full"
@@ -121,6 +145,7 @@ const Signup = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={isLoading}
           />
           <input
             className="w-full px-4 py-3 mb-4 border border-indigo-300 rounded-full"
@@ -129,12 +154,15 @@ const Signup = () => {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            disabled={isLoading}
+            minLength="6"
           />
           <button
             type="submit"
-            className="w-full py-3 text-white bg-indigo-600 rounded-full hover:bg-indigo-800"
+            className="w-full py-3 text-white bg-indigo-600 rounded-full hover:bg-indigo-800 disabled:bg-indigo-400"
+            disabled={isLoading}
           >
-            Sign Up 🌍
+            {isLoading ? "Creating Account..." : "Sign Up 🌍"}
           </button>
         </form>
 
@@ -143,6 +171,7 @@ const Signup = () => {
           <button
             onClick={() => navigate("/login")}
             className="text-indigo-600 underline"
+            disabled={isLoading}
           >
             Log in
           </button>

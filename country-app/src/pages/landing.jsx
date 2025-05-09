@@ -11,11 +11,11 @@ const LandingPage = () => {
     <>
       {/* Hero Section */}
       <div className="relative min-h-screen bg-gradient-to-b from-purple-500 to-indigo-600 overflow-hidden flex items-center">
-        {/* Animated Background World Map */}
+        {/* Centered Animated Background World Map */}
         <motion.img
           src="/images/world-map.png"
           alt="World Map"
-          className="absolute top--19 left-1/4 right-1/2 w-full max-w-4xl opacity-20 transform -translate-x-1/2 pointer-events-none"
+          className="absolute inset-0 m-auto w-full max-w-5xl opacity-20 pointer-events-none"
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 0.2 }}
           transition={{ duration: 2 }}
@@ -72,31 +72,29 @@ const LandingPage = () => {
           </motion.button>
 
           <motion.div
-  className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-sm mx-auto"
-  initial={{ opacity: 0, y: 40 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1, delay: 0.9 }}
->
-  <button
-    onClick={() => navigate("/login")}
-    className="flex items-center justify-center gap-2 px-6 py-3 bg-white/20 text-white border border-white/30 backdrop-blur-md rounded-full font-medium shadow-lg hover:bg-white/30 hover:shadow-xl transition duration-300"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3m12 0l-4-4m4 4l-4 4m10 4v-1a3 3 0 00-3-3H9a3 3 0 00-3 3v1"/></svg>
-    Login
-  </button>
+            className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-sm mx-auto"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+          >
+            <button
+              onClick={() => navigate("/login")}
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-white/20 text-white border border-white/30 backdrop-blur-md rounded-full font-medium shadow-lg hover:bg-white/30 hover:shadow-xl transition duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M15 12H3m12 0l-4-4m4 4l-4 4m10 4v-1a3 3 0 00-3-3H9a3 3 0 00-3 3v1"/></svg>
+              Login
+            </button>
 
-  <button
-    onClick={() => navigate("/signup")}
-    className="flex items-center justify-center gap-2 px-6 py-3 bg-white text-purple-700 rounded-full font-medium shadow-lg hover:bg-purple-100 hover:shadow-xl transition duration-300"
-  >
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"/></svg>
-    Sign Up
-  </button>
-</motion.div>
-
+            <button
+              onClick={() => navigate("/signup")}
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-white text-purple-700 rounded-full font-medium shadow-lg hover:bg-purple-100 hover:shadow-xl transition duration-300"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4"/></svg>
+              Sign Up
+            </button>
+          </motion.div>
         </div>
       </div>
-
 
       {/* Features Section */}
       <section className="py-20 bg-white">
